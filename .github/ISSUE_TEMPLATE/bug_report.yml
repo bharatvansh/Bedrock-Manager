@@ -55,7 +55,7 @@ body:
     id: minecraft-version
     attributes:
       label: Minecraft Bedrock Version
-      description: The version of Minecraft: Bedrock Edition installed on your system (visible on the game title screen).
+      description: "The version of Minecraft: Bedrock Edition installed on your system (visible on the game title screen)."
       placeholder: e.g. 1.21.20
     validations:
       required: false
