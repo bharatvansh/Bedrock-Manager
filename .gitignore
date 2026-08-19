@@ -1,0 +1,17 @@
+# OS & System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# Environment & Local files
+.env
+.env.local
+*.local
+
+# Editor & IDE files
+.vscode/
+.idea/
+*.swp
+*~
+

@@ -1,0 +1,74 @@
+name: 💡 Feature Request
+description: Propose a new idea, tool, or workflow improvement for Bedrock Manager
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve **Bedrock Manager**! 
+        Please ensure you have checked [existing issues](https://github.com/bharatvansh/Bedrock-Manager/issues) and [discussions](https://github.com/bharatvansh/Bedrock-Manager/discussions) before submitting to prevent duplicates.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Feature Category / Module
+      description: Which area of Bedrock Manager does this request target?
+      options:
+        - "📦 Add-on & Pack Management (Install, Validation, Pairing)"
+        - "🔍 Archive Inspector / \"Peek Inside\" (Code, Audio, Textures)"
+        - "🗺️ Worlds & Live NBT Editor (Gamerules, Packs, Export)"
+        - "🎨 2D & 3D Skin Studio (Painting, Layers, Presets)"
+        - "📑 Add-on Profiles & Loadouts (Presets, Priority Reordering)"
+        - "☁️ BYOS Cloud Backups & Sync (Google Drive, Snapshots)"
+        - "🖼️ Procedural Icon Generator"
+        - "🛒 Marketplace & Content Discovery"
+        - "🖥️ UI / UX & Dashboard (Navigation, Themes, Performance)"
+        - "⚙️ Settings, Diagnostics & Path Configuration"
+        - "🌐 Other / General Enhancement"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement or Use Case
+      description: Is your feature request related to a specific problem, limitation, or friction in your workflow?
+      placeholder: |
+        A clear and concise description of the problem or limitation you're encountering.
+        e.g., "When managing large packs with multiple subpacks, I currently have to manually..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution & Expected Behavior
+      description: Describe what you would like Bedrock Manager to do and how you envision it working.
+      placeholder: |
+        A clear and concise description of the proposed feature, including:
+        - How the user interacts with it in the UI/UX
+        - What actions or automated tasks occur
+        - Expected end result or output
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or Workarounds Considered
+      description: Have you considered or used any workarounds, manual scripts, or existing third-party tools?
+      placeholder: |
+        Describe any alternative approaches or external tools you currently use to solve this issue.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Mockups, Screenshots & Additional Context
+      description: Add any visual mockups, UI sketches, sample manifests/JSON files, or external references.
+      placeholder: |
+        Drag and drop screenshots, mockups, or paste relevant schema snippets here...
+    validations:
+      required: false
