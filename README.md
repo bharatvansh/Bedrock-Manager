@@ -4,7 +4,7 @@
 
 **The desktop management suite for Minecraft Bedrock Edition on Windows.**
 
-[![Release](https://img.shields.io/badge/Release-v1.7.5-emerald?style=flat-square)](https://bedrockmanager.app/changelog.html)
+[![Release](https://img.shields.io/badge/Release-v1.7.6-emerald?style=flat-square)](https://bedrockmanager.app/changelog.html)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue?style=flat-square)](https://bedrockmanager.app)
 [![Architecture](https://img.shields.io/badge/Architecture-x64%20%7C%20ARM64-purple?style=flat-square)](https://bedrockmanager.app)
 [![Documentation](https://img.shields.io/badge/Docs-Markdown-10b981?style=flat-square)](./docs/index.md)
@@ -34,10 +34,10 @@ The core desktop application is built with **Tauri v2 + Rust** and a **React 19 
 - **Recycle Bin Safe Deletion**: Deletions move files safely to the Windows Recycle Bin rather than permanently deleting them.
 
 ### 🔍 "Peek Inside" Archive Inspector
-- Dual pane virtual explorer for examining archive contents before or after installation.
-- Syntax highlighted code viewer for JSON manifests, TypeScript/JavaScript scripts, `.mcfunction`, and `.lang` localization files.
-- Built-in audio player for `.ogg`, `.wav`, and `.mp3` sound files with scrubbing and volume control.
-- High resolution texture and sprite viewer.
+- **Dual-Pane Virtual Explorer**: Level-order (BFS) pack directory scanning with noise filtering (`.git`, `.vscode`, etc.).
+- **Syntax-Highlighted Code Viewer**: Built-in tokenizer for JSON manifests, TypeScript/JavaScript scripts, `.mcfunction`, and `.lang` localization files, complete with in-file search (<kbd>Ctrl+F</kbd>), line numbers, word-wrap, and JSON formatting.
+- **Waveform Audio Player**: Interactive visual waveform scrubber and multi-track FSB / WEM SoundBank playback (`.ogg`, `.mp3`, `.wav`, `.fsb`, `.wem`).
+- **Texture & Sprite Viewer**: Native preview support for `.png`, `.jpg`, `.webp`, and `.tga` files, featuring automatic nearest-neighbor pixelated scaling for low-res textures (< 256×256) and natural dimension metadata.
 
 ### 🗺️ World Management & Live NBT Editor
 - **Direct `level.dat` Editing**: Modify gamerules (`keepInventory`, `mobGriefing`, `doFireTick`, etc.), game modes, difficulty, and custom seeds.

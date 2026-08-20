@@ -21,12 +21,14 @@ You can launch the inspector from the **Addon Library** (`/addons`):
 
 The left pane provides a virtual directory tree of the pack's folder hierarchy with rich visual indicators and navigation tools:
 
-- **Bedrock Folder & File Recognition**: Recognized directories (`textures`, `scripts`, `functions`, `entities`, `models`, `sounds`, `animations`, `subpacks`, `ui`, `pbr`, `fogs`, `biomes`, etc.) and file types (`.json`, `.js`, `.ts`, `.lang`, `.mcfunction`, `.mcstructure`, `.png`, `.ogg`, etc.) are assigned distinct icons and color highlights.
-- **File Metadata**: Displays exact formatted file sizes (B, KB, MB) and folder item counts.
-- **Fast Search & Filter**: Type in the filter bar to instantly flatten the directory tree into a searchable list of matching files showing their full relative paths.
-- **Expand & Collapse All**: Quickly expand or collapse all subdirectories with one click.
-- **Open Folder in Explorer**: Click **Open Folder** in the modal header to reveal the pack's root directory in Windows Explorer or your native OS file manager.
-- **Safety Limits**: Large packs are scanned up to a maximum directory depth of 10 levels and 3,000 files. If a pack exceeds this limit, an indicator displays `showing first 3,000 entries`.
+- **Level-Order (BFS) Traversal**: Scans directories using a breadth-first arena traversal, ensuring critical root files (such as `manifest.json`, `pack_icon.png`, and `pack_icon.tga`) are indexed first before any safety limits are met.
+- **Noise & Artifact Filtering**: Automatically filters out build artifacts, version control directories, and OS junk files (including `.git`, `.vscode`, `.idea`, `.DS_Store`, and `Thumbs.db`).
+- **Bedrock Folder & File Recognition**: Recognized directories (`textures`, `scripts`, `functions`, `entities`, `models`, `sounds`, `animations`, `subpacks`, `ui`, `pbr`, `fogs`, `biomes`, etc.) and file types (`.json`, `.js`, `.ts`, `.lang`, `.mcfunction`, `.mcstructure`, `.png`, `.tga`, `.ogg`, `.fsb`, `.wem`, etc.) are assigned distinct icons and color highlights.
+- **File Metadata & Stats**: Displays formatted file sizes (B, KB, MB), item counts, and consolidated directory stats in the header subtitle.
+- **Fast Search & Filter Bar**: Filter files in real time with instant match highlights and a one-click clear (<kbd>✕</kbd>) button.
+- **Expand & Collapse All**: Integrated toolbar buttons to expand or collapse all subdirectories in a single click.
+- **Open Folder in Explorer**: Click **Open Folder** in the modal header to reveal the pack's root directory in Windows Explorer.
+- **Safety Limits**: Scans up to a maximum directory depth of 10 levels and 10,000 files, displaying `showing first 10,000 entries` if a pack exceeds the threshold.
 
 ---
 
@@ -34,22 +36,26 @@ The left pane provides a virtual directory tree of the pack's folder hierarchy w
 
 Selecting any file in the tree opens the right-hand preview pane. Pressing the <kbd>Escape</kbd> key closes the active preview first, and a second press closes the inspector modal.
 
-### 1. Text & Code Viewer
-- Displays raw file contents inside a clean, scrollable text viewer for `.json`, `.js`, `.ts`, `.mcfunction`, `.lang`, `.txt`, and other text-based files.
-- Automatically handles UTF-8 text encoding.
-- Text files exceeding **512 KB** are safely capped and display a `Preview truncated — file is larger than 512 KB` notice.
-- Includes an **Open** button in the header to open the selected file in your system's default code or text editor.
+### 1. Syntax-Highlighted Code & Text Viewer
+- **Custom Syntax Highlighting**: Fast client-side tokenizer supporting `.json`, `.js`, `.ts`, `.mcfunction`, `.lang` localization files, `.html`, and `.css`.
+- **In-File Search**: Press <kbd>Ctrl</kbd> + <kbd>F</kbd> (or <kbd>Cmd</kbd> + <kbd>F</kbd>) to open the in-file search bar with live match counts and <kbd>Enter</kbd> / <kbd>Shift</kbd> + <kbd>Enter</kbd> navigation.
+- **Line Numbers & Metadata**: Full line numbering, line count badge, and detected language indicators.
+- **JSON Formatting Toggle**: Format and beautify minified JSON manifests or structure definitions with a single click.
+- **Word Wrap & Clipboard Tools**: Quick toggle for word wrapping long lines and a one-click **Copy to Clipboard** button.
+- **Safety Cap**: Files exceeding **512 KB** display a `Preview truncated — file is larger than 512 KB` notice.
+- **External Editor**: Includes an **Open** button in the header to open the file in your default code editor (e.g. VS Code).
 
-### 2. Audio Player
-- Embedded HTML5 audio player supporting `.ogg`, `.mp3`, and `.wav` sound files.
-- Streamed directly from disk via the app's secure custom local file protocol.
-- Includes playback controls, timeline scrubbing, track duration, and volume adjustment.
-- Useful for auditioning custom mob sounds, ambient audio, and music discs.
+### 2. Waveform Audio Player & SoundBank Inspector
+- **Custom Waveform Visualizer**: Interactive audio waveform canvas rendered directly from decoded sound data with hover timestamp seeking.
+- **HTTP `206 Partial Content` Range Streaming**: Custom local file streaming protocol enables instant seeking and scrub playback without waiting for complete file buffering.
+- **FSB SoundBank & Multi-Stream Playback**: Native decoding of FMOD SoundBanks (`.fsb` and `.wem` FSB5 Vorbis/PCM) via Rust `fsbex`. Includes a stream selector dropdown and previous/next track navigation buttons for multi-track banks.
+- **Supported Formats**: `.ogg`, `.mp3`, `.wav`, `.fsb`, and `.wem`.
+- **Playback Controls**: Play/pause, interactive scrub bar, elapsed/total duration, loop toggle, and volume slider.
 
 ### 3. Image & Texture Viewer
-- Inline rendering for `.png`, `.jpg`, `.jpeg`, `.gif`, and `.webp` image assets.
-- Allows immediate visual verification of item icons, block textures, UI sprites, and pack icons.
-- If an image format cannot be rendered natively (such as `.tga`), the viewer displays a fallback state with an **Open** button to launch it in your OS image viewer.
+- **Supported Formats**: Native rendering for `.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`, and `.tga` (including `pack_icon.tga` and TGA block/entity textures decoded on-the-fly via Rust).
+- **Pixel-Art vs. Smooth Scaling**: Low-resolution in-game textures (< 256×256 px) automatically render with crisp nearest-neighbor pixelated scaling, while high-resolution pack icons and artwork use smooth scaling.
+- **Dimension Metadata**: Displays the image's natural dimensions (e.g., `16 × 16 px`, `512 × 512 px`) in the viewer badge.
 
 ### 4. Binary & Unsupported Files
 - Files containing binary data (automatically detected by null-byte inspection) display a clean fallback view with file size and an **Open** button to launch them in an external program.
@@ -61,4 +67,4 @@ Selecting any file in the tree opens the right-hand preview pane. Pressing the <
 - **Verify Manifests & Modules**: Review `manifest.json` UUIDs, module definitions, minimum engine versions, and dependencies.
 - **Inspect Script Code**: Check TypeScript/JavaScript entry points in `scripts/` before loading an addon into your world.
 - **Inspect Custom Functions**: Review `.mcfunction` commands to verify installation and setup instructions.
-- **Audit Textures & Audio**: Preview custom sound effects and UI textures without needing to launch Minecraft.
+- **Audit Textures & Audio**: Preview custom sound effects, multi-track FSB soundbanks, and UI textures without needing to launch Minecraft.
