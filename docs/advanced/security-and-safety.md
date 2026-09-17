@@ -11,7 +11,7 @@ When extracting untrusted `.mcaddon`, `.mcpack`, or `.zip` archives from third-p
 - **Entry Count Limit**: Maximum 100,000 files per archive.
 - **Single File Size Limit**: Maximum 256 MB per uncompressed entry.
 - **Total Archive Limit**: Maximum 4 GB cumulative uncompressed size.
-- **Path Sanitization**: Rejects any archive entry attempting directory traversal (`../` or `..\`), absolute paths (`/` or `\`), or Windows drive prefixes (`C:`).
+- **Path Sanitization**: Rejects any archive entry attempting directory traversal (`../` or `..\`), absolute paths (`/` or `\`), Windows drive prefixes (`C:`), or path segments containing colons (`:`). This prevents Windows path-buffer resets and blocks NTFS Alternate Data Stream (ADS) exploits.
 
 ---
 
@@ -24,6 +24,7 @@ To prevent this:
 2. The manifest and file structures are verified for integrity.
 3. The temporary folder is swapped into the destination path using an **atomic filesystem rename** (`std::fs::rename`).
 4. If an extraction fails at any step, the temporary directory is cleaned up, leaving your existing library untouched.
+5. **Update Rollback Preservation**: When replacing an existing pack, the previous version is staged in a safety backup folder. If the update fails, Bedrock Manager restores the previous version. Even if the rollback restore encounters an external file lock, the backup is safely preserved on disk rather than deleted.
 
 ---
 

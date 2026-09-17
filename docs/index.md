@@ -19,7 +19,7 @@ Welcome to the **Bedrock Manager** documentation hub. This repository contains c
 - **[2D & 3D Skin Studio](./features/skin-studio.md)** - Real-time 3D model viewport (`skinview3d`), 2D pixel editor, body layer toggles, and auto skin pack generation.
 - **[Procedural Pack Icon Generator](./features/icon-generator.md)** - Procedural pixel art badge generation for packs lacking `pack_icon.png`.
 - **[Marketplace Browser](./features/marketplace.md)** - In-app content browser for discovering community creations across CurseForge and MCPEDL.
-- **[Cloud Sync & BYOS Backups](./features/cloud-sync-byos.md)** - Bring-Your-Own-Storage world and addon backups to Google Drive with delta deduplication.
+- **[Cloud Sync & BYOS Backups](./features/cloud-sync-byos.md)** - Bring-Your-Own-Storage backups to Google Drive in transparent .mcworld and .mcpack formats with a dedicated Recovery Center.
 
 ### 🛠️ Advanced Technical Reference
 - **[Bedrock File Formats & Manifests](./advanced/file-formats.md)** - Detailed specifications for `.mcaddon`, `.mcpack`, `.mcworld`, `manifest.json` schemas, and Little-Endian NBT structure.

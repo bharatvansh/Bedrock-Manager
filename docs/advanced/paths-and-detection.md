@@ -36,7 +36,6 @@ Bedrock Manager stores its own internal configuration, cache, and session files 
 %APPDATA%\Bedrock Manager\
 ├── config.json               # App preferences and settings
 ├── skin_editor_sessions/     # Autosaved skin canvas states and undo stacks
-├── blob_cache/               # BYOS local content-addressed hash cache
 └── logs/                     # Application diagnostic and install logs
 ```
 

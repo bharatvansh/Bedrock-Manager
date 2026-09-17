@@ -1,6 +1,6 @@
 # Cloud Sync & BYOS Backups
 
-Bedrock Manager provides a **Bring Your Own Storage (BYOS)** backup and synchronization engine. You can back up your worlds, addon collections, and profile configurations directly to your own Google Drive or Microsoft OneDrive(soon) account.
+Bedrock Manager provides a **Bring Your Own Storage (BYOS)** backup and synchronization engine. You can back up your worlds, addon collections, custom skins, and development packs directly to your personal Google Drive storage.
 
 ---
 
@@ -17,47 +17,59 @@ With BYOS:
 
 ## Architecture & Storage Format
 
-The backup engine (`byos_backup.rs`) uses a content-addressed storage architecture designed for speed and minimal bandwidth:
+Bedrock Manager stores backups in a **Transparent Storage Format** within a human-readable folder hierarchy (`BedrockManagerBackups/`) in your cloud storage. Content is packaged into standard, self-contained Minecraft archives:
 
 ```
-  [ Local World / Packs ]
-              │
-              ▼
+  [ Local Worlds / Packs / Skins ]
+                 │
+                 ▼
   ┌────────────────────────────────────────────────────────┐
   │                 BYOS Backup Engine                     │
-  │  1. Compute SHA-256 hash for every file                │
-  │  2. Check existing hashes against remote blob index    │
-  │  3. Pack only new/modified files into 32 MB chunk packs│
-  │  4. Upload snapshot manifest referencing blob hashes   │
+  │  1. Package item into .mcworld, .mcpack, or .png       │
+  │  2. Verify modification timestamps and archive hashes  │
+  │  3. Upload new or modified archives to cloud hierarchy │
+  │  4. Update backup manifest and root README.txt         │
   └──────────────────────────┬─────────────────────────────┘
                              │
                              ▼
-              [ Google Drive / OneDrive ]
+  [ Google Drive: BedrockManagerBackups/ ]
+  ├── minecraftWorlds/          (.mcworld files)
+  ├── resource_packs/           (.mcpack files)
+  ├── behavior_packs/           (.mcpack files)
+  ├── skins/                    (.png skin files)
+  └── backup-manifest.json
 ```
 
 ### Key Technical Properties
-- **Content-Addressed Blobs**: If 5 different worlds use the exact same resource pack, that pack is uploaded only once.
-- **Delta Uploads**: Subsequent world backups upload only changed LevelDB chunk files, making backup updates quick.
-- **32 MB Chunk Packaging**: Small files are aggregated into balanced 32 MB archive chunks to stay within cloud provider API rate limits.
+- **Transparent Archives**: Backups are standard `.mcworld`, `.mcpack`, and `.png` files that can be downloaded and opened directly in Minecraft without special extraction tools.
+- **Human-Readable Hierarchy**: Saves are organized into clean cloud directories mirroring your Minecraft layout, with a generated `README.txt` and `backup-manifest.json` at the root.
+- **Hash Verification**: Unchanged items are detected via archive checksums and skipped, avoiding unnecessary bandwidth usage.
 
 ---
 
 ## Setting Up Cloud Backups
 
 1. Open **Settings > Cloud & Backup**.
-2. Click **Connect Google Drive** (or OneDrive).
+2. Click **Connect Google Drive**.
 3. Complete the standard OAuth2 browser authentication. The app securely stores access tokens locally using PKCE.
 4. Configure your backup preferences:
-   - **Inclusions**: Worlds, Resource Packs, Behavior Packs, Custom Skins.
-   - **Schedule**: Manual only, On Startup, Daily, or Weekly.
+   - **Inclusions**: Worlds, Resource Packs, Behavior Packs, Custom Skins, and Development Packs.
+   - **Triggers**:
+     - *Backup on Game Close*: Automatically checks for modifications and backs up whenever Minecraft closes.
+     - *Scheduled*: On Startup, Daily, or Weekly.
+     - *Manual*: Trigger an instant snapshot at any time.
    - **Retention Limit**: Keep the last *N* snapshots (older snapshots are automatically pruned).
 
 ---
 
-## Restoring Backups Safely
+## Recovery Center & Safe Restores
 
-Accidentally corrupting an active world during a restore is a real risk with standard file copying. Bedrock Manager mitigates this with a strict multi-step restore sequence:
+The built-in **Recovery Center** provides an interactive dashboard to inspect, export, or restore backed-up items:
 
-1. **Diff Preview**: Before restoring, the app computes a detailed preview showing which files will be added, modified, or removed.
-2. **Pre-Restore Rollback Snapshot**: An automatic local safety snapshot of your existing world is taken immediately before any files are overwritten.
-3. **Atomic Swap**: Restored files are reconstructed in a staging area and swapped in atomically. If an error occurs, the pre-restore snapshot is restored instantly.
+- **Item Inspection**: Browse backed-up items by category (Worlds, Resource Packs, Behavior Packs, Skins), view snapshot history, and check live sync status.
+- **Standalone Export**: Export any world, pack, or skin from any historical snapshot directly to disk as a standalone archive (`.mcworld`, `.mcpack`, or `.png`) without overwriting active game files.
+- **Granular Conflict Resolution**:
+  - *Worlds*: Choose **Restore as Copy** (restores to a new folder with a dated label) or **Overwrite Local** (safely moves the active world to the Windows Recycle Bin before staging the restore).
+  - *Packs & Skins*: Overwrite existing files (moving old files to the Recycle Bin) or skip conflicting items.
+- **Pre-Restore Rollback Snapshot**: An automatic safety snapshot of your local files is taken immediately before any overwrite operation.
+- **Exit Guard**: The application intercepts window close requests while a backup or restore operation is in progress, preventing data corruption from partial writes.

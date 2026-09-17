@@ -1,6 +1,6 @@
 # Marketplace Browser
 
-The **Marketplace** (`/marketplace`) is an integrated content browser in Bedrock Manager for discovering Minecraft Bedrock community creations. Projects are indexed directly from **CurseForge**, allowing you to browse popular addons, resource packs, worlds, and skins without leaving the app.
+The **Marketplace** (`/marketplace`) is an integrated content browser in Bedrock Manager for discovering Minecraft Bedrock community creations. Over **19,000+** projects are indexed directly from **CurseForge**, allowing you to browse popular addons, resource packs, worlds, and skins without leaving the app.
 
 ---
 
@@ -9,7 +9,7 @@ The **Marketplace** (`/marketplace`) is an integrated content browser in Bedrock
 To support addon creators and respect their work:
 
 - **No Direct File Scraping**: Bedrock Manager does not host or bypass original download links. Direct downloading within third-party tools is prohibited by platform policies and deprives creators of traffic and ad revenue on their official distribution channels.
-- **Direct Official Links**: Every project card provides direct links to the official project and download pages on **CurseForge** and **MCPEDL**.
+- **Direct Official Links**: Every project card provides direct links to the official project and download pages on **CurseForge** and **MCPEDL** (where available).
 - **Creator Support**: By visiting official project pages, you directly support the creators who build and maintain Bedrock content.
 
 ---
@@ -28,12 +28,12 @@ The browser indexes Bedrock community projects across several categories:
 
 ## Filtering & Search
 
-- **Search Query**: Search projects by name, keyword, or author.
+- **Search Query**: Fast indexed search across project names, descriptions, and creator tags.
 - **Sort Filters**:
-  - *Most Popular* (sorted by total community downloads and endorsements)
-  - *Newest Releases* (recently published projects)
-  - *Recently Updated* (active projects updated for recent Minecraft Bedrock releases)
-- **Compatibility Information**: View author credits, release notes, screenshot galleries, and minimum required game versions.
+  - *Recently Updated* (Default – active projects updated for recent Minecraft Bedrock releases)
+  - *Newest* (recently published projects)
+  - *Most Popular* (sorted by total community downloads)
+- **Project Details**: View rich descriptions, screenshot galleries, creator credits, version numbers, update dates, total install counts, and direct links to official downloads, project wikis, and source code.
 
 ---
 
@@ -41,6 +41,6 @@ The browser indexes Bedrock community projects across several categories:
 
 1. Browse or search for content in the **Marketplace** tab.
 2. Click any project card to view its description, author credits, and screenshot gallery.
-3. Click the external link button to open the official download page on **CurseForge** or **MCPEDL**.
+3. Click **Download from CurseForge** or **Download from MCPEDL** to open the official release page in your browser.
 4. Download the `.mcaddon`, `.mcpack`, or `.zip` file from the creator's page.
 5. Drag and drop the downloaded file into Bedrock Manager to install it into your game instantly.

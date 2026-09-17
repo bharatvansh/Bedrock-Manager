@@ -4,7 +4,7 @@
 
 **The desktop management suite for Minecraft Bedrock Edition on Windows.**
 
-[![Release](https://img.shields.io/badge/Release-v1.7.6-emerald?style=flat-square)](https://bedrockmanager.app/changelog.html)
+[![Release](https://img.shields.io/badge/Release-v1.9.2-emerald?style=flat-square)](https://bedrockmanager.app/changelog.html)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue?style=flat-square)](https://bedrockmanager.app)
 [![Architecture](https://img.shields.io/badge/Architecture-x64%20%7C%20ARM64-purple?style=flat-square)](https://bedrockmanager.app)
 [![Documentation](https://img.shields.io/badge/Docs-Markdown-10b981?style=flat-square)](./docs/index.md)
@@ -55,11 +55,16 @@ The core desktop application is built with **Tauri v2 + Rust** and a **React 19 
 - Drag and reorder pack priority to control texture and behavior overrides.
 - Apply profiles to any world or set them as Global Resources with a single click.
 
+### 🛒 Marketplace Content Browser
+- **19,000+ Bedrock Creations**: Discover popular addons, texture packs, maps, scripts, and skins indexed directly from CurseForge.
+- **Creator-First Downloads**: Direct links to official download pages on CurseForge and MCPEDL to ensure creators receive credit and traffic.
+- **Instant Drag-and-Drop Installation**: Drop downloaded `.mcaddon`, `.mcpack`, or `.zip` files directly into Bedrock Manager to install them into your library.
+
 ### ☁️ BYOS (Bring Your Own Storage) Cloud Backups
-- Securely back up worlds and addons to your own Google Drive or Microsoft OneDrive (soon) account using OAuth2 with PKCE.
-- **Content-Addressed Deduplication**: Identical pack files are hashed (SHA-256) and uploaded only once across all worlds.
-- **Safe Delta Snapshots**: Fast incremental backups that only upload modified LevelDB chunks.
-- **Pre-Restore Rollbacks**: Automatically creates a local safety snapshot before any restore operation.
+- Securely back up worlds, addons, and custom skins directly to your Google Drive account using OAuth2 with PKCE.
+- **Transparent Archives**: Saves are stored as standard `.mcworld`, `.mcpack`, and `.png` files in a clean, human-readable cloud folder hierarchy.
+- **Automatic Game-Close Backups**: Detects Minecraft process termination and automatically backs up modified content.
+- **Recovery Center**: Interactive dashboard with version history, granular conflict resolution (restore as copy or overwrite with Recycle Bin safety), and standalone archive export.
 
 ---
 

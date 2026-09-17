@@ -16,7 +16,7 @@ Bedrock Manager solves these problems by providing a unified, offline first dash
 - **Automatic Manifest Repair**: Automatically fixes common manifest problems, syntax errors, and schema inconsistencies so broken addons load properly.
 - **Live World NBT Editing**: Edit `level.dat` gamerules, switch game modes, adjust spawn coordinates, and manage gameplay mechanics and cycle settings.
 - **Real-time 3D Skin Studio**: Paint skins in both 2D and 3D viewports with live layer toggles, automatic 64×32 to 64×64 texture padding, and direct export into game dressing rooms.
-- **BYOS Cloud Backup**: Back up worlds and addons to your own Google Drive storage using deduplicated chunking and pre-restore rollback protection.
+- **BYOS Cloud Backup**: Back up worlds, addons, and custom skins directly to Google Drive in transparent .mcworld and .mcpack formats with pre-restore rollback protection.
 
 ---
 
