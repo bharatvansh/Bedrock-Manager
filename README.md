@@ -61,9 +61,9 @@ The core desktop application is built with **Tauri v2 + Rust** and a **React 19 
 - **Instant Drag-and-Drop Installation**: Drop downloaded `.mcaddon`, `.mcpack`, or `.zip` files directly into Bedrock Manager to install them into your library.
 
 ### ☁️ BYOS (Bring Your Own Storage) Cloud Backups
-- Securely back up worlds, addons, and custom skins directly to your Google Drive account using OAuth2 with PKCE.
+- Securely back up worlds, addons, and custom skins directly to your Google Drive or Dropbox account using OAuth2 with PKCE.
 - **Transparent Archives**: Saves are stored as standard `.mcworld`, `.mcpack`, and `.png` files in a clean, human-readable cloud folder hierarchy.
-- **Automatic Game-Close Backups**: Detects Minecraft process termination and automatically backs up modified content.
+- **Flexible Scheduling**: Run backups on startup, daily, weekly, or manually with Backup Now.
 - **Recovery Center**: Interactive dashboard with version history, granular conflict resolution (restore as copy or overwrite with Recycle Bin safety), and standalone archive export.
 
 ---

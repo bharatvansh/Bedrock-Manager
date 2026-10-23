@@ -20,7 +20,7 @@ Yes. Bedrock Manager works with Minecraft Bedrock Edition installed from the Mic
 Drag and drop your `.mcpack`, `.mcaddon`, or `.mcworld` files straight into the application window. Bedrock Manager sorts them into the right place and lets you toggle them on or off.
 
 ### Will I lose my worlds if something goes wrong?
-No. You can back up worlds and packs to Google Drive or Microsoft OneDrive and restore them anytime, so your builds stay safe across reinstalls and devices.
+No. You can back up worlds and packs to Google Drive or Dropbox and restore them anytime, so your builds stay safe across reinstalls and devices.
 
 ### Is this an official Minecraft or Mojang product?
 No. Bedrock Manager is an independent community tool. It is not approved by or associated with Mojang Studios or Microsoft.

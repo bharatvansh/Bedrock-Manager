@@ -1,6 +1,6 @@
 # Cloud Sync & BYOS Backups
 
-Bedrock Manager provides a **Bring Your Own Storage (BYOS)** backup and synchronization engine. You can back up your worlds, addon collections, custom skins, and development packs directly to your personal Google Drive storage.
+Bedrock Manager provides a **Bring Your Own Storage (BYOS)** backup and synchronization engine. You can back up your worlds, addon collections, custom skins, and development packs directly to your personal cloud storage (Google Drive or Dropbox).
 
 ---
 
@@ -32,7 +32,7 @@ Bedrock Manager stores backups in a **Transparent Storage Format** within a huma
   └──────────────────────────┬─────────────────────────────┘
                              │
                              ▼
-  [ Google Drive: BedrockManagerBackups/ ]
+  [ Google Drive / Dropbox: BedrockManagerBackups/ ]
   ├── minecraftWorlds/          (.mcworld files)
   ├── resource_packs/           (.mcpack files)
   ├── behavior_packs/           (.mcpack files)
@@ -49,16 +49,16 @@ Bedrock Manager stores backups in a **Transparent Storage Format** within a huma
 
 ## Setting Up Cloud Backups
 
-1. Open **Settings > Cloud & Backup**.
-2. Click **Connect Google Drive**.
-3. Complete the standard OAuth2 browser authentication. The app securely stores access tokens locally using PKCE.
+1. Sign in to your Bedrock Manager account, then open **Settings > Cloud & Backup**.
+2. Pick a storage provider (Google Drive or Dropbox) and click **Connect**. One provider is active at a time.
+3. Complete the standard OAuth2 browser authentication. Your connection is stored encrypted with your account and works across all signed-in devices, while backup files are always sent directly to your provider.
 4. Configure your backup preferences:
    - **Inclusions**: Worlds, Resource Packs, Behavior Packs, Custom Skins, and Development Packs.
    - **Triggers**:
-     - *Backup on Game Close*: Automatically checks for modifications and backs up whenever Minecraft closes.
-     - *Scheduled*: On Startup, Daily, or Weekly.
-     - *Manual*: Trigger an instant snapshot at any time.
-   - **Retention Limit**: Keep the last *N* snapshots (older snapshots are automatically pruned).
+     - *Scheduled*: Daily, Weekly, or On Startup.
+     - *Manual*: Use **Backup Now** to trigger an instant snapshot at any time.
+   - **Saved Backup Points**: Keep the last 5, 10 (recommended), or 15 backup points.
+   - **Automatic Pruning**: Older backups are cleaned up automatically to save cloud space.
 
 ---
 

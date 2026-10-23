@@ -11,7 +11,7 @@ When extracting untrusted `.mcaddon`, `.mcpack`, or `.zip` archives from third-p
 - **Entry Count Limit**: Maximum 100,000 files per archive.
 - **Single File Size Limit**: Maximum 256 MB per uncompressed entry.
 - **Total Archive Limit**: Maximum 4 GB cumulative uncompressed size.
-- **Path Sanitization**: Rejects any archive entry attempting directory traversal (`../` or `..\`), absolute paths (`/` or `\`), Windows drive prefixes (`C:`), or path segments containing colons (`:`). This prevents Windows path-buffer resets and blocks NTFS Alternate Data Stream (ADS) exploits.
+- **Path Sanitization**: Rejects any archive entry attempting directory traversal (`../` or `..\`), Windows drive prefixes (`C:`), or path segments containing colons (`:`), and strips leading slashes so absolute-style entries extract as harmless relative paths. This prevents Windows path-buffer resets and blocks NTFS Alternate Data Stream (ADS) exploits.
 
 ---
 

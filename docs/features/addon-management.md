@@ -47,7 +47,7 @@ Clicking any pack opens the **Slide out Inspector Panel**:
 
 Need to clean up multiple old packs or export a batch for a friend?
 1. Click the **Select Mode** button in the top toolbar.
-2. Check the boxes on the packs you want to manage.
+2. Check the boxes on the packs you want to manage. You can also Shift-click a second pack to select the entire range between them.
 3. Choose **Bulk Export** to package selected items into `.mcpack` files, or **Bulk Delete** to remove them safely to the Recycle Bin.
 
 ---

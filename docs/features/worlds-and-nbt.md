@@ -14,7 +14,7 @@ The Worlds dashboard organizes all locally discovered Minecraft Bedrock worlds w
 - **Card Metadata**: Displays game mode badge, difficulty, in-game days played, active resource/behavior pack counts, disk size, and last modified date.
 - **Cloud Protection**: Displays the BYOS backup shield indicator when a world is protected in your cloud backup storage.
 - **Search & Sort**: Filter worlds by name or sort by Last Played, File Size, and Alphabetical order.
-- **Multi-Select & Bulk Actions**: Batch select multiple worlds to perform bulk `.mcworld` exports or bulk deletion.
+- **Multi-Select & Bulk Actions**: Batch select multiple worlds to perform bulk `.mcworld` exports or bulk deletion. Shift-click a second world to select the entire range between them.
 
 ---
 
