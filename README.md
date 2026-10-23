@@ -4,7 +4,7 @@
 
 **The desktop management suite for Minecraft Bedrock Edition on Windows.**
 
-[![Release](https://img.shields.io/badge/Release-v1.9.2-emerald?style=flat-square)](https://bedrockmanager.app/changelog.html)
+[![Release](https://img.shields.io/badge/Release-v2.0.5-emerald?style=flat-square)](https://bedrockmanager.app/changelog.html)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue?style=flat-square)](https://bedrockmanager.app)
 [![Architecture](https://img.shields.io/badge/Architecture-x64%20%7C%20ARM64-purple?style=flat-square)](https://bedrockmanager.app)
 [![Documentation](https://img.shields.io/badge/Docs-Markdown-10b981?style=flat-square)](./docs/index.md)
